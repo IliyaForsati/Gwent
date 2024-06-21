@@ -1,5 +1,8 @@
 package model.enums.mainMenu;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public enum MainMenuCommands {
     logout(""),
     goToProfileMenu(""),
@@ -9,7 +12,8 @@ public enum MainMenuCommands {
     MainMenuCommands(String regex) {
         this.regex = regex;
     }
-    public String getRegex() {
-        return regex;
+    public Matcher getMatcher(String input) {
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(input);
     }
 }

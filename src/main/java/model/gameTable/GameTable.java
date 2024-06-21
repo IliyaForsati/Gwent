@@ -1,14 +1,14 @@
 package model.gameTable;
 
 import model.enums.card.Card;
-import model.cards.leaders.LeaderCards;
+import model.enums.card.Leaders;
 import model.toolClasses.Pair;
 
 import java.util.ArrayList;
 
 public class GameTable {
     int HP;
-    private LeaderCards leader;
+    private Leaders leader;
     private ArrayList<Pair<Card, Integer>> deck;
     private ArrayList<Card> deadCards;
     private ArrayList<Card> inHandsCards;
@@ -22,7 +22,7 @@ public class GameTable {
         this.HP = HP;
     }
 
-    public void setLeader(LeaderCards leader) {
+    public void setLeader(Leaders leader) {
         this.leader = leader;
     }
 
@@ -30,7 +30,7 @@ public class GameTable {
         return HP;
     }
 
-    public LeaderCards getLeader() {
+    public Leaders getLeader() {
         return leader;
     }
 

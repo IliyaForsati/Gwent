@@ -7,7 +7,9 @@ import model.toolClasses.Result;
 public class GameMenuController {
 
     private static UserInGame player1, player2;
-    private static void setPlayers(User user1, User user2) {}
+    private static void setPlayers(User user1, User user2) {
+        //HEEEELLLPPP
+    }
 
     private static void changeTurn(){}
     //

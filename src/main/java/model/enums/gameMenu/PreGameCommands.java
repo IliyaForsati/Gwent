@@ -20,14 +20,12 @@ public enum PreGameCommands {
     DELETE_FROM_DECK(""),
     CHANGE_TURN(""),
     START_GAME("");
-    private final String command;
-    PreGameCommands(String command){
-        this.command = command;
+    private final String regex;
+    PreGameCommands(String regex){
+        this.regex = regex;
     }
-    public Matcher getMatcher(String input){
-        Matcher matcher = Pattern.compile(this.command).matcher(input);
-        if (matcher.matches()){
-            return matcher;
-        } else return null;
+    public Matcher getMatcher(String input) {
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(input);
     }
 }

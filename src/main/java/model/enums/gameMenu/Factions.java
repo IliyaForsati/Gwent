@@ -7,7 +7,7 @@ import model.toolClasses.Result;
 import java.util.ArrayList;
 
 public enum Factions {
-    MONSTER("", setForMonster()),
+    MONSTER("Monster", setForMonster()),
     EMPIRE_NILFGARDEN("", setForEmpireNilfGaarden()),
     REALMS_NORTHERN("", setForRealmsNorthern()),
     SCOIATEAL("", setForScoiaTael()),
@@ -19,6 +19,16 @@ public enum Factions {
     Factions(String name, ArrayList<Pair<Card, Integer>> cardCollection) {
         this.name = name;
         this.cardCollection = cardCollection;
+    }
+
+    public static Factions getFaction(String targetName) {
+        for (Factions faction : Factions.values()) {
+            if (faction.name.equals(targetName)) {
+                return faction;
+            }
+        }
+        // Throw an exception or handle the case where no matching faction is found
+        return null;
     }
 
     // return deepCopy of cardCollection

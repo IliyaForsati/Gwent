@@ -1,31 +1,72 @@
 package controller.GameControllers;
 
 import model.User;
+import model.UserPreGameInfo;
+import model.enums.card.Card;
+import model.enums.gameMenu.Factions;
+import model.toolClasses.Pair;
 import model.toolClasses.Result;
+
+import java.util.ArrayList;
 
 public class PreGameMenuController {
     public static User currentUser = User.getLoggedInUser();
     // create a game
     public static Result createGame(String player2Username) {
-        return new Result(true, "");
+        //check if player2Username is valid or not
+        User secondUser = User.getLoggedInUser();
+        if (secondUser == null)
+            return new Result(false, "Second player username is invalid!");
+
+        //check if current user wants to play with himself or not
+        if (secondUser.getUsername().equals(currentUser.getUsername()))
+            return new Result(false, "You can't play with yourself!");
+
+        //run the game menu in view
+
+        return new Result(true, "Game started");
     }
     private static boolean isUsernameValid(String username) {
         return true;
     }
 
     // show factions
-    public static Result showFactions() {
-        return new Result(true, "");
+    // it returns the faction that the user selected before
+    public static Factions showFactions() {
+        User user = User.getLoggedInUser();
+        return user.getUserPreGameInfo().getFaction();
     }
 
     // select faction
     public static Result selectFaction(String factionName) {
-        return null;
+        Factions factions = Factions.getFaction(factionName);
+        if (factions == null)
+            return new Result(false, "No faction found with this name!");
+
+
+        //changing the faction
+        User user = User.getLoggedInUser();
+        UserPreGameInfo userPreGameInfo = user.getUserPreGameInfo();
+        userPreGameInfo.setFaction(factions);
+        user.setUserPreGameInfo(userPreGameInfo);
+        User.setLoggedInUser(user);
+
+        return new Result(true, "Faction changed successfully!");
     }
 
     // show Cards
     public static Result showCards() {
-        return null;
+        User user = User.getLoggedInUser();
+
+        Factions factions = user.getUserPreGameInfo().getFaction();
+        ArrayList<Pair<Card,Integer>> factionCards = factions.getDeepCopyOfArraylist();
+        // printing all cards
+        for (int i = 0; i < factionCards.size(); i++) {
+            Pair<Card, Integer> cardIntegerPair = factionCards.get(i);
+            Card card = cardIntegerPair.getFirst();
+            int numberOfCard = cardIntegerPair.getSecond();
+        }
+        return null; // todo
     }
 
 
