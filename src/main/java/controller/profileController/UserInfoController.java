@@ -2,12 +2,13 @@ package controller.profileController;
 
 import model.GameHistory;
 import model.User;
+import model.toolClasses.Result;
 
 import java.util.ArrayList;
 
 public class UserInfoController {
     //show username, nickname, highest score, rank, number of played games, won games, lost games, draw games.
-    public static void showInfo() {}
+    public static Result showInfo() {}
 
     public static ArrayList<GameHistory> showGameHistory(int n){
         User user = User.getLoggedInUser();

@@ -13,7 +13,9 @@ public enum MainMenuCommands {
         this.regex = regex;
     }
     public Matcher getMatcher(String input) {
-        Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(input);
+        Matcher matcher = Pattern.compile(this.regex).matcher(input);
+        if (matcher.matches()) {
+            return matcher;
+        } else return null;
     }
 }

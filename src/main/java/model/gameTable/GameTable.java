@@ -9,10 +9,10 @@ import java.util.ArrayList;
 public class GameTable {
     int HP;
     private Leaders leader;
-    private ArrayList<Pair<Card, Integer>> deck;
-    private ArrayList<Card> deadCards;
-    private ArrayList<Card> inHandsCards;
-    private ArrayList<Pair<Card, ArrayList<Card>>> CardsOfRow;
+    private ArrayList<Pair<Card, Integer>> deck = new ArrayList<>();
+    private ArrayList<Card> deadCards = new ArrayList<>();
+    private ArrayList<Card> inHandsCards = new ArrayList<>();
+    private ArrayList<Pair<Card, ArrayList<Card>>> CardsOfRow = new ArrayList<>();
 
     public GameTable() {
 
